@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "./Header";
 import LeftSide from "./LeftSide";
 import RightSide from './RightSide';
+import { weatherContext } from "../Context/WeatherData";
 
 const WeatherRapper = () => {
+  const {} = useContext(weatherContext);
+  
   return (
     <div className="w-screen">
       <Header />
