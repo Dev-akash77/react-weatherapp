@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoSunnyOutline } from "react-icons/io5";
 import { LuMoon } from "react-icons/lu";
 import { MdAir, MdOutlineWaterDrop } from "react-icons/md";
@@ -6,7 +6,21 @@ import HighlightCard from "../UI/HighlightCard";
 import { PiWaves } from "react-icons/pi";
 import { FaRegEye } from "react-icons/fa";
 import { TbTemperatureMinus } from "react-icons/tb";
+import { weatherContext } from "../Context/WeatherData";
 const Highlight = () => {
+  const { currentWeather,airPollution } = useContext(weatherContext);
+  const { pm2_5, no2, so2, o3 } = airPollution?.list[0]?.components || {};
+  
+  // ! format time for sunset and sunrise
+  const formatTimes = (unixTimestamp) => {
+    const date = new Date(unixTimestamp * 1000);
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12; // Convert to 12-hour format
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    return `${hours}:${formattedMinutes} ${ampm}`;
+  };
   return (
     <div className="bg-[var(--elem)] rounded-2xl p-5">
       <p className="capitalize text-lg my-3">Todays Highlights</p>
@@ -27,10 +41,10 @@ const Highlight = () => {
             <MdAir className="md:text-[2.9rem] text-[3.5rem]" />
             <div className="grid place-content-center md:grid-cols-4 grid-cols-2 text-center gap-6 md:w-auto w-[80%]">
               {[
-                { name: "PM25", val: 3.9 },
-                { name: "so2", val: 7.75 },
-                { name: "No2", val: 66.5 },
-                { name: "o3", val: 37.9 },
+               { name: "PM25", val: isNaN(+pm2_5) ? "--" : Math.round(+(pm2_5)) },
+               { name: "SO2", val: isNaN(+so2) ? "--" : Math.round(+(so2)) },
+               { name: "NO2", val: isNaN(+no2) ? "--" : Math.round(+(no2)) },
+               { name: "O3", val: isNaN(+o3) ? "--" : Math.round(+(o3)) },
               ].map((cur, id) => {
                 return (
                   <div
@@ -61,7 +75,9 @@ const Highlight = () => {
                 <p className="text-[.8rem] text-gray-300 font-semibold">
                   Sunrise
                 </p>
-                <p className="text-4xl">6:30 AM</p>
+                <p className="text-4xl">
+                  {currentWeather && formatTimes(currentWeather.sys.sunrise)}
+                </p>
               </div>
             </div>
             {/* sunrise */}
@@ -73,7 +89,9 @@ const Highlight = () => {
                 <p className="text-[.8rem] text-gray-300 font-semibold">
                   Sunset
                 </p>
-                <p className="text-4xl">5:39 PM</p>
+                <p className="text-4xl">
+                {currentWeather && formatTimes(currentWeather.sys.sunset)}
+                </p>
               </div>
             </div>
             {/* sunset */}
@@ -87,14 +105,25 @@ const Highlight = () => {
         <HighlightCard
           icon={<MdOutlineWaterDrop />}
           name="Humidity"
-          value="82"
+          value={currentWeather && currentWeather.main.humidity}
         />
-        <HighlightCard icon={<PiWaves />} name="Pressure" value="1011" />
-        <HighlightCard icon={<FaRegEye />} name="visibility" value="0.42" />
+        <HighlightCard
+          icon={<PiWaves />}
+          name="Pressure"
+          value={currentWeather && currentWeather.main.pressure}
+        />
+        <HighlightCard
+          icon={<FaRegEye />}
+          name="visibility"
+          value={currentWeather && currentWeather.visibility / 1000}
+        />
         <HighlightCard
           icon={<TbTemperatureMinus />}
           name="Feels Like"
-          value="32"
+          value={
+            currentWeather &&
+            Math.trunc(currentWeather.main.feels_like - 273.13)
+          }
         />
       </div>
     </div>

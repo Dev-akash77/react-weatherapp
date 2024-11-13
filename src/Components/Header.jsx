@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { CiDark, CiSearch } from "react-icons/ci";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { TiWeatherPartlySunny } from "react-icons/ti";
+import { weatherContext } from "../Context/WeatherData";
 
 const Header = () => {
+  const {handleSearch,handleSubmit,setCity,city} = useContext(weatherContext);
   return (
     <div className="cc py-5 fixed w-screen bg-[var(--bg)] z-50 top-0">
       <div className="container flex md:flex-row flex-col md:items-center gap-5 md:gap-0 justify-between">
@@ -12,10 +14,12 @@ const Header = () => {
           <p className="text-3xl">Weatherio</p>
         </h1>
         <div className="container flex items-center justify-between md:w-[65%] w-full">
-        <form className="flex items-center justify-start bg-[var(--elem)] p-2 gap-2 w-[65%] md:w-[50%] rounded-3xl">
-            <CiSearch className="text-xl font-bold ml-1" />
+        <form className="flex items-center justify-start bg-[var(--elem)] p-2 gap-2 w-[65%] md:w-[50%] rounded-3xl" onSubmit={(e)=>{handleSubmit(e,city)}}>
+            <CiSearch className="text-xl font-bold ml-1" onClick={()=>{handleSearch()}}/>
           <input
             type="text"
+            value={city}
+            onChange={(e)=>{setCity(e.target.value)}}
             placeholder="Search city...."
             className="bg-transparent outline-none w-full"
           />

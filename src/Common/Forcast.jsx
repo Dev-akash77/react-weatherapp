@@ -1,26 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
+import { weatherContext } from "../Context/WeatherData";
 
-const Forcast = () => {
+const Forecast = () => {
+  const { dayHourForcast } = useContext(weatherContext);
+
   return (
     <div className="bg-[var(--elem)] rounded-2xl p-5 shadows">
-      {[1, 2, 3, 4, 5].map((cur) => {
-        return (
-          <div key={cur} className="flex items-center justify-between">
-            <div className="flex items-center justify-center gap-1 md:text-xl text-2xl">
-              <img
-                src="http://openweathermap.org/img/wn/03d@4x.png"
-                alt="forcast data waether image"
-                className="w-14 md:w-11"
-              />
-              7°
-            </div>
-            <p className="capitalize md:text-sm text-xl">2 Mar</p>
-            <p className="capitalize md:text-sm text-xl">Thurst day</p>
-          </div>
-        );
-      })}
+      {dayHourForcast &&
+        dayHourForcast.list.map((cur, index) => {
+          // Display every 8th data point for daily forecast
+          if (index % 8 === 0) {
+            return (
+              <div key={cur.dt} className="flex items-center justify-between">
+                <div className="flex items-center justify-center gap-1 md:text-xl text-2xl">
+                  <img
+                    src={`http://openweathermap.org/img/wn/${cur.weather[0].icon}@4x.png`}
+                    alt="forecast weather icon"
+                    className="w-14 md:w-11"
+                  />
+                  <p>{Math.trunc(cur.main.temp - 273.15)}°</p>
+                </div>
+                <p className="capitalize md:text-sm text-xl text-start">
+                  {new Date(cur.dt * 1000).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                  })}
+                </p>
+                <p className="capitalize md:text-sm text-xl text-start w-[30%]">
+                  {new Date(cur.dt * 1000).toLocaleString("en-US", {
+                    weekday: "long",
+                  })}
+                </p>
+              </div>
+            );
+          }
+          return null;
+        })}
     </div>
   );
 };
 
-export default Forcast;
+export default Forecast;
