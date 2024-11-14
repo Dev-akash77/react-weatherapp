@@ -10,6 +10,14 @@ import { weatherContext } from "../Context/WeatherData";
 const Highlight = () => {
   const { currentWeather,airPollution } = useContext(weatherContext);
   const { pm2_5, no2, so2, o3 } = airPollution?.list[0]?.components || {};
+  const getAirQualityDetails = (no2) => {
+    if (no2 <= 50) return { label: "Good", color: "bg-green-300" };
+    if (no2 <= 100) return { label: "Moderate", color: "bg-yellow-300" };
+    if (no2 <= 200) return { label: "Unhealthy for Sensitive Groups", color: "bg-orange-300" };
+    if (no2 <= 300) return { label: "Unhealthy", color: "bg-red-400" };
+    if (no2 <= 400) return { label: "Very Unhealthy", color: "bg-purple-600" };
+    // return { label: "Hazardous", color: "bg-maroon-700" };
+  };
   
   // ! format time for sunset and sunrise
   const formatTimes = (unixTimestamp) => {
@@ -32,9 +40,9 @@ const Highlight = () => {
               Air quality index
             </p>
             <div
-              className={`bg-green-300 rounded-xl py-[.1rem] px-2 text-black cc`}
+              className={`${getAirQualityDetails(no2) && getAirQualityDetails(no2).color} rounded-xl py-[.1rem] px-2 text-black cc`}
             >
-              Good
+              {getAirQualityDetails(no2) && getAirQualityDetails(no2).label}
             </div>
           </div>
           <div className="flex items-center justify-between mt-5">

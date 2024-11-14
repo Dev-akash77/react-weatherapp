@@ -3,10 +3,13 @@ import Header from "./Header";
 import LeftSide from "./LeftSide";
 import RightSide from './RightSide';
 import { weatherContext } from "../Context/WeatherData";
+import Loaders from "../UI/Loaders";
 
 const WeatherRapper = () => {
-  const {} = useContext(weatherContext);
-  
+  const {currentWeatherLoading} = useContext(weatherContext);
+  if (currentWeatherLoading) {
+    return <Loaders />
+  }
   return (
     <div className="w-screen">
       <Header />
