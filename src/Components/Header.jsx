@@ -5,7 +5,7 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { weatherContext } from "../Context/WeatherData";
 
 const Header = () => {
-  const {handleSearch,handleSubmit,setCity,city} = useContext(weatherContext);
+  const {handleSearch,handleSubmit,setCity,city,userLocation} = useContext(weatherContext);
   return (
     <div className="cc py-5 fixed w-screen bg-[var(--bg)] z-50 top-0">
       <div className="container flex md:flex-row flex-col md:items-center gap-5 md:gap-0 justify-between">
@@ -25,7 +25,7 @@ const Header = () => {
           />
         </form>
         <div className="flex items-center justify-center gap-2">
-          <div className="flex items-center justify-start bg-[var(--btn)] md:py-2 md:px-4 px-3 py-2 gap-2 rounded-3xl cursor-pointer">
+          <div className="flex items-center justify-start bg-[var(--btn)] md:py-2 md:px-4 px-3 py-2 gap-2 rounded-3xl cursor-pointer" onClick={userLocation}>
             <FaLocationCrosshairs className="text-black" />
             <p className="text-black flex gap-2"><span className="hidden md:block">Current</span> Location</p>
           </div>

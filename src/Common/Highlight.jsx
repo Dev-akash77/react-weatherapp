@@ -34,7 +34,7 @@ const Highlight = () => {
       <p className="capitalize text-lg my-3">Todays Highlights</p>
       <div className="flex md:flex-row flex-col items-center justify-between mt-5 gap-5">
         {/*  */}
-        <div className="bg-[var(--elmcont)] rounded-2xl p-3 text-sm w-full md:w-auto">
+        <div className="bg-[var(--elmcont)] rounded-2xl p-3 text-sm w-full md:w-[50%]">
           <div className="flex items-center justify-between">
             <p className="capitalize text-gray-300 font-semibold md:text-sm text-base">
               Air quality index
@@ -71,7 +71,7 @@ const Highlight = () => {
           </div>
         </div>
         {/*  */}
-        <div className="bg-[var(--elmcont)] rounded-2xl py-3 px-5 md:w-auto w-full">
+        <div className="bg-[var(--elmcont)] rounded-2xl py-3 px-5 md:w-[50%] w-full">
           <p className="capitalize md:text-sm text-base text-gray-300 font-semibold">
             Sunrise & sunset
           </p>
