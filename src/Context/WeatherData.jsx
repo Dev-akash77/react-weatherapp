@@ -83,7 +83,7 @@ const userLocation = async () => {
           
           if (res.ok) {
             const data = await res.json();
-            setCityName(data.results[0].components.city)
+            setCityName(data.results[0].components.state)
             // Process data here as needed
           } else {
             console.error("Error fetching location data:", res.statusText);
