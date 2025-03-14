@@ -6,7 +6,7 @@ import { weatherContext } from "../Context/WeatherData";
 import Loaders from "../UI/Loaders";
 
 const WeatherRapper = () => {
-  const {currentWeatherLoading} = useContext(weatherContext);
+  const {currentWeatherLoading,currentWeather} = useContext(weatherContext);
   if (currentWeatherLoading) {
     return <Loaders />
   }

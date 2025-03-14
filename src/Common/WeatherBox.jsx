@@ -3,7 +3,7 @@ import { MdOutlineDateRange, MdOutlineLocationOn } from "react-icons/md";
 import { weatherContext } from "../Context/WeatherData";
 
 const WeatherBox = () => {
-  const { currentWeather, currentWeatherLoading } = useContext(weatherContext);
+  const { currentWeather,currentWeatherLoading } = useContext(weatherContext);
   const [currentDate, setCurrentDate] = useState();
 
   // ! today date
@@ -15,58 +15,58 @@ const WeatherBox = () => {
     });
   };
   const weatherIcon=()=>{
-    if (currentWeather.weather[0].icon=="01n") {
+    if (currentWeather?.weather[0].icon=="01n") {
       return `https://cdn-icons-png.flaticon.com/128/8179/8179110.png`
     }
-    if (currentWeather.weather[0].icon=="01d") {
+    if (currentWeather?.weather[0].icon=="01d") {
       return `https://cdn-icons-png.flaticon.com/128/8030/8030072.png`
     }
-    if (currentWeather.weather[0].icon=="02n") {
+    if (currentWeather?.weather[0].icon=="02n") {
       return `https://cdn-icons-png.flaticon.com/128/2286/2286940.png`
     }
-    if (currentWeather.weather[0].icon=="02d") {
+    if (currentWeather?.weather[0].icon=="02d") {
       return `https://cdn-icons-png.flaticon.com/128/4064/4064276.png`
     }
-    if (currentWeather.weather[0].icon=="03n") {
+    if (currentWeather?.weather[0].icon=="03n") {
       return `https://cdn-icons-png.flaticon.com/128/9755/9755232.png`
     }
-    if (currentWeather.weather[0].icon=="03d") {
+    if (currentWeather?.weather[0].icon=="03d") {
       return `https://cdn-icons-png.flaticon.com/128/9755/9755232.png`
     }
-    if (currentWeather.weather[0].icon=="04n") {
+    if (currentWeather?.weather[0].icon=="04n") {
       return `https://cdn-icons-png.flaticon.com/128/13804/13804450.png`
     }
-    if (currentWeather.weather[0].icon=="04d") {
+    if (currentWeather?.weather[0].icon=="04d") {
       return `https://cdn-icons-png.flaticon.com/128/13804/13804450.png`
     }
-    if (currentWeather.weather[0].icon=="09n") {
+    if (currentWeather?.weather[0].icon=="09n") {
       return `https://cdn-icons-png.flaticon.com/128/3351/3351962.png`
     }
-    if (currentWeather.weather[0].icon=="09d") {
+    if (currentWeather?.weather[0].icon=="09d") {
       return `https://cdn-icons-png.flaticon.com/128/3351/3351962.png`
     }
-    if (currentWeather.weather[0].icon=="10n") {
+    if (currentWeather?.weather[0].icon=="10n") {
       return `https://cdn-icons-png.flaticon.com/128/4834/4834499.png`
     }
-    if (currentWeather.weather[0].icon=="10d") {
+    if (currentWeather?.weather[0].icon=="10d") {
       return `https://cdn-icons-png.flaticon.com/128/3075/3075858.png`
     }
-    if (currentWeather.weather[0].icon=="11n") {
+    if (currentWeather?.weather[0].icon=="11n") {
       return `https://cdn-icons-png.flaticon.com/128/6635/6635854.png`
     }
-    if (currentWeather.weather[0].icon=="11d") {
+    if (currentWeather?.weather[0].icon=="11d") {
       return `https://cdn-icons-png.flaticon.com/128/6635/6635854.png`
     }
-    if (currentWeather.weather[0].icon=="13n") {
+    if (currentWeather?.weather[0].icon=="13n") {
       return `https://cdn-icons-png.flaticon.com/128/13370/13370664.png`
     }
-    if (currentWeather.weather[0].icon=="13d") {
+    if (currentWeather?.weather[0].icon=="13d") {
       return `https://cdn-icons-png.flaticon.com/128/13370/13370664.png`
     }
-    if (currentWeather.weather[0].icon=="50n") {
+    if (currentWeather?.weather[0].icon=="50n") {
       return `https://cdn-icons-png.flaticon.com/128/16227/16227754.png`
     }
-    if (currentWeather.weather[0].icon=="50d") {
+    if (currentWeather?.weather[0].icon=="50d") {
       return `https://cdn-icons-png.flaticon.com/128/16227/16227754.png`
     }
    }
