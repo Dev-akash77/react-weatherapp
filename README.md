@@ -7,23 +7,23 @@ Weather.io is a modern weather forecasting application built with React and Tail
 
 ---
 
-🌟 Features
+ Features
 
-🌤 Current Weather: Get real-time weather updates for any city.
+ Current Weather: Get real-time weather updates for any city.
 
-📅 5-Day Forecast: See upcoming weather trends.
+ 5-Day Forecast: See upcoming weather trends.
 
-🌬 Wind Direction: View wind direction with an intuitive perspective icon.
+ Wind Direction: View wind direction with an intuitive perspective icon.
 
-🌆 Weather Image: Dynamic background image based on the selected city.
+ Weather Image: Dynamic background image based on the selected city.
 
-🌿 Air Quality: Get real-time air pollution levels.
+ Air Quality: Get real-time air pollution levels.
 
-🌅 Sunset & Sunrise: Know the exact timings for sunrise and sunset.
+ Sunset & Sunrise: Know the exact timings for sunrise and sunset.
 
-💧 Weather Details: Includes humidity, pressure, visibility, and "feels like" temperature.
+ Weather Details: Includes humidity, pressure, visibility, and "feels like" temperature.
 
-📍 Current Location: Click on the location icon to get weather details for your current location.
+ Current Location: Click on the location icon to get weather details for your current location.
 
 
 
